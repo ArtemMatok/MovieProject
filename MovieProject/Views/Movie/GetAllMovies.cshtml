@@ -1,0 +1,168 @@
+﻿@model IEnumerable<Movie>
+
+
+@*    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="~/css/site.css">
+        <!-- Box Icons -->
+        <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+         <!-- Link Swiper's CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+        <style>
+            body {
+                
+                position: relative;
+                overflow: hidden;
+            }
+
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                background: url("https://img3.akspic.ru/crops/4/4/9/2/7/172944/172944-spiderman-chelovek_pauk-misterio-figurka-goryachie_igrushki-3840x2160.jpg") center/cover no-repeat;
+                filter: blur(5px); /* Заміла фону (змініть значення на ваш розсуд) */
+            }
+
+            
+        </style>
+    </head>
+
+    <section class="movies" id="movies">
+        <h2 class="heading">Opening This Week</h2>
+        <!-- Movies Conatiner -->
+        <div class="movies-container">
+            <!-- Box1 -->
+        @foreach (var item in Model.Where(x => x.TypeOfMovies == 0))
+            {
+                <div class="box">
+                    <div class="box-img">
+                        <img src="@item.Image" alt="">
+                    </div>
+                    <h3>@item.Name</h3>
+                    <span>@item.Time | @item.Type</span>
+                </div>
+            
+            }
+            
+        </div>
+    </section>
+
+    <!-- Coming -->
+    <section class="coming" id="coming">
+        <h2 class="heading">Coming Soon</h2>
+        <!-- Coming Container -->
+        <div class="movies-container">
+            <div class="movies-container">
+                <!-- Box1 -->
+            @foreach (var item in Model.Where(x => x.TypeOfMovies  >0))
+            {
+                    <div class="swiper-slide box">
+                        <div class="box-img">
+                            <img src="@item.Image" alt="">
+                        </div>
+                        <h3>@item.Name</h3>
+                        <span>@item.Time | @item.Type</span>
+                    </div>
+            }
+            
+                    
+                
+                
+            
+            </div>            
+        </div>
+    </section>
+*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Movies Website</title>
+    <link rel="stylesheet" href="~/css/site.css">
+    <!-- Box Icons -->
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+     <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <style>
+            body {
+
+                position: relative;
+                overflow: hidden;
+            }
+
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                background: url("https://img3.akspic.ru/crops/4/4/9/2/7/172944/172944-spiderman-chelovek_pauk-misterio-figurka-goryachie_igrushki-3840x2160.jpg") center/cover no-repeat;
+                filter: blur(5px); /* Заміла фону (змініть значення на ваш розсуд) */
+            }
+
+
+        </style>
+</head>
+<body>
+      <section class="movies" id="movies">
+        <h2 class="heading">Opening This Week</h2>
+        <!-- Movies Conatiner -->
+        <div class="movies-container">
+            <!-- Box1 -->
+            @foreach (var item in Model.Where(x => x.TypeOfMovies == 0))
+            {
+                    <div class="box">
+                        <div class="box-img">
+                            <img src="@item.Image" alt="">
+                        </div>
+                        <h3>@item.Name</h3>
+                        <span>@item.Time | @item.Type</span>
+                    </div>
+
+            }
+
+        </div>
+    </section>
+
+    <!-- Coming -->
+    <section class="coming" id="coming">
+        <h2 class="heading">Coming Soon</h2>
+        <!-- Coming Container -->
+        <div class="movies-container">
+            <div class="movies-container">
+                <!-- Box1 -->
+                @foreach (var item in Model.Where(x => x.TypeOfMovies > 0))
+                {
+                        <div class="swiper-slide box">
+                            <div class="box-img">
+                                <img src="@item.Image" alt="">
+                            </div>
+                            <h3>@item.Name</h3>
+                            <span>@item.Time | @item.Type</span>
+                        </div>
+                }
+
+
+
+
+
+            </div>            
+        </div>
+    </section>
+</body>
+</html>
